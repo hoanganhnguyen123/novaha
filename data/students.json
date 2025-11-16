@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1763285988698",
+    "name": "ládk",
+    "email": "phanvantien07091978@gmail.com",
+    "phone": "/;aksjd;á",
+    "university": "văn lang",
+    "skills": [
+      "js"
+    ],
+    "bio": "alsdj;lakd",
+    "cv": "/uploads/1763285988694-326059735-SE204275_LeDucDuy.pdf",
+    "createdAt": "2025-11-16T09:39:48.698Z"
+  },
+  {
+    "id": "1763285963418",
+    "name": "aklsdlaks",
+    "email": "hoanganh22041996@gmail.com",
+    "phone": "0399148815",
+    "university": "alksjdl",
+    "skills": [
+      "cssasda"
+    ],
+    "bio": "ádads",
+    "cv": "/uploads/1763285963414-556668147-SE191022-NGOTANCHUONG-PRO2_(1).pdf",
+    "createdAt": "2025-11-16T09:39:23.418Z"
+  },
+  {
+    "id": "1763285935987",
+    "name": "nguyễn hoàng anh",
+    "email": "hoanganh22041996@gmail.com",
+    "phone": "0399148815",
+    "university": "văn hiến",
+    "skills": [
+      "html"
+    ],
+    "bio": "lasjdlkas;dl",
+    "cv": "/uploads/1763285935982-577288577-Tutase161452_10%.pdf",
+    "createdAt": "2025-11-16T09:38:55.987Z"
+  },
+  {
+    "id": "1763284664059",
+    "name": "nguyễn hoàng anh",
+    "email": "hoanganh22041996@gmail.com",
+    "phone": "0399148815",
+    "university": "fpt",
+    "skills": [
+      "backend"
+    ],
+    "bio": "laksdlk akjdlkasjd adskj a;lksjd ádkj",
+    "cv": "/uploads/1763284663952-15126953-Há»_SÆ_NÄNG_Lá»°C_-_CÃNG_TY_TNHH_NOVAHA.pdf",
+    "createdAt": "2025-11-16T09:17:44.059Z"
+  }
+]

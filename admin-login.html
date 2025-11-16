@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login - NovaHA TalentHub</title>
+
+<link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0ea5ff22, #7c3aed22);
+    }
+
+    .login-wrapper {
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--card-border);
+      width: 420px;
+      padding: 32px;
+      border-radius: var(--radius);
+      animation: fadeIn .4s ease-out;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(10px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    #loginMsg {
+      margin-top: 14px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+    }
+
+    .success {
+      color: #22c55e;
+    }
+
+    .error {
+      color: #ef4444;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+  <h2>Đăng nhập Admin</h2>
+
+  <form id="loginForm">
+    <label class="small">Tài khoản</label>
+    <input name="username" required>
+
+    <label class="small">Mật khẩu</label>
+    <input type="password" name="password" required>
+
+    <button class="btn-primary" style="margin-top:18px;width:100%">
+      Đăng nhập
+    </button>
+  </form>
+
+  <p id="loginMsg"></p>
+</div>
+
+<script>
+
+// 👉 Nếu đã đăng nhập trước → chuyển thẳng vào admin
+if (localStorage.getItem("adminToken")) {
+  window.location.href = "/admin";
+}
+
+// 👉 Xử lý form đăng nhập
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const fd = new FormData(e.target);
+
+  const res = await fetch("/api/admin/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: fd.get("username"),
+      password: fd.get("password")
+    })
+  });
+
+  const data = await res.json();
+  const msg = document.getElementById("loginMsg");
+
+  if (data.ok) {
+    msg.innerText = "Đăng nhập thành công!";
+    msg.className = "success";
+    msg.style.display = "block";
+
+    localStorage.setItem("adminToken", data.token);
+
+    setTimeout(() => {
+      window.location.href = "/admin";
+    }, 800);
+
+  } else {
+    msg.innerText = "Sai tài khoản hoặc mật khẩu!";
+    msg.className = "error";
+    msg.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>

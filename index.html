@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NovaHA TalentHub – Cổng truy cập</title>
+
+<link rel="stylesheet" href="styles.css">
+
+  <!-- Animation / Parallax CSS -->
+  <style>
+    /* Parallax background */
+    body {
+      background: linear-gradient(180deg, #f8fbff, #eef4ff);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Orbs */
+    .orb1, .orb2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      z-index: -1;
+      animation: float 8s infinite ease-in-out alternate;
+    }
+    .orb1 {
+      width: 300px; height: 300px;
+      background: #0ea5ff;
+      top: 40px; left: -80px;
+    }
+    .orb2 {
+      width: 260px; height: 260px;
+      background: #7c3aed;
+      bottom: 80px; right: -60px;
+    }
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to   { transform: translateY(40px); }
+    }
+
+    /* Page Layout */
+    .home-wrap {
+      text-align: center;
+      padding-top: 40px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+    .home-title {
+      font-size: 40px;
+      font-weight: 800;
+    }
+
+    .home-sub {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 6px;
+      margin-bottom: 38px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Access Cards */
+    .access-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .access-card {
+      width: 300px;
+      padding: 30px;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      transition: 0.35s ease;
+      transform: translateY(0);
+      animation: slideUp 0.7s ease-out both;
+    }
+
+    .access-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+    }
+
+    @keyframes slideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+    /* Card Icon */
+    .access-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 14px;
+      border-radius: 14px;
+      display:flex;align-items:center;justify-content:center;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+      box-shadow: var(--shadow-sm);
+      color: white;
+      font-size: 40px;
+    }
+
+    .access-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .access-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-bottom: 20px;
+      height: 42px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Parallax Orbs -->
+  <div class="orb1"></div>
+  <div class="orb2"></div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a class="brand" href="/">🚀 NovaHA TalentHub</a>
+    </header>
+
+    <!-- MAIN -->
+    <main class="home-wrap">
+      
+      <h2 class="home-title">Chọn khu vực truy cập</h2>
+      <p class="home-sub">
+        Cổng TalentHub giúp sinh viên gửi CV – doanh nghiệp tìm nhân lực – Admin quản lý hồ sơ tập trung.
+      </p>
+
+      <div class="access-grid">
+
+        <!-- Student Zone -->
+        <a class="access-card" href="/student" style="animation-delay: .15s">
+          <div class="access-icon">🎓</div>
+          <div class="access-title">Khu vực Sinh viên</div>
+          <div class="access-desc">
+            Gửi hồ sơ, cập nhật kỹ năng và nộp CV để tham gia dự án thực chiến.
+          </div>
+          <button class="btn-primary" style="width:100%">Truy cập</button>
+        </a>
+
+        <!-- Admin Zone -->
+        <a class="access-card" href="/admin-login" style="animation-delay: .3s">
+          <div class="access-icon">🛠</div>
+          <div class="access-title">Khu vực Admin</div>
+          <div class="access-desc">
+            Xem danh sách sinh viên, CV, dashboard, thống kê chuyên môn.
+          </div>
+          <button class="btn-primary" style="width:100%">Đăng nhập</button>
+        </a>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

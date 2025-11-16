@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin – NovaHA TalentHub</title>
+<link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <style>
+    .charts-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .chart-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      padding: 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    canvas { max-height: 200px; }
+
+    .filter-row {
+      margin-top: 28px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    select {
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .student-card {
+      background: var(--card);
+      padding: 16px;
+      margin-top: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+    }
+
+    .avatar-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0ea5ff, #7c3aed);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      float:right;
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+if(!localStorage.getItem("adminToken")){
+  window.location.href = "/admin-login";
+}
+</script>
+
+<div class="container">
+
+  <header class="header">
+    <a class="brand" href="/">⭠ Trở về</a>
+    <h2>Admin Dashboard</h2>
+  </header>
+
+  <main>
+
+    <!-- SUMMARY -->
+    <section class="grid-3">
+      <div class="card">
+        <h3>Tổng số sinh viên</h3>
+        <div id="totalStudents" class="num">0</div>
+      </div>
+      <div class="card">
+        <h3>Số CV Uploaded</h3>
+        <div id="totalCV" class="num">0</div>
+      </div>
+      <div class="card">
+        <h3>Kỹ năng phổ biến</h3>
+        <div id="topSkills"></div>
+      </div>
+    </section>
+
+    <!-- FILTER -->
+    <section class="filter-row">
+      <select id="filterSkill">
+        <option value="">Lọc theo kỹ năng</option>
+      </select>
+
+      <select id="filterUniversity">
+        <option value="">Lọc theo trường</option>
+      </select>
+
+      <button class="btn-primary" onclick="exportExcel()">Xuất Excel</button>
+    </section>
+
+    <!-- CHARTS -->
+    <section class="charts-grid">
+
+      <div class="chart-box">
+        <h4>Tỷ lệ kỹ năng</h4>
+        <canvas id="skillChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4>Top trường</h4>
+        <canvas id="universityChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4>Biểu đồ ứng viên / tuần</h4>
+        <canvas id="weekChart"></canvas>
+      </div>
+    </section>
+
+    <!-- STUDENT LIST -->
+<section style="margin-top:32px">
+  <h3>Danh sách sinh viên</h3>
+
+  <!-- pagination controls -->
+  <div style="display:flex;align-items:center;gap:12px;margin:12px 0;flex-wrap:wrap">
+    <label class="small">Hiển thị</label>
+    <select id="pageSize">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+
+    <div style="flex:1"></div>
+
+    <div id="paginationControls"></div>
+  </div>
+
+  <div id="students"></div>
+</section>
+
+
+  </main>
+
+</div>
+
+<script src="/dashboard.js"></script>
+</body>
+</html>
